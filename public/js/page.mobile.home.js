@@ -28,6 +28,7 @@ function search(term) {
 }
 
 function writelog(str) {
+	console.log(str);
 	node = document.getElementById("log");
 	node.innerHTML = str;
 	// $(".log").text(str);
