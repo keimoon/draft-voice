@@ -97,12 +97,19 @@ function doStart() {
 	speakParaWithId(curid);
 }
 
+function doSearch(term) {
+	para = "You want to search for " + term + "." +
+		" Found an article. Do you want to hear this?.";
+	writelog(para);
+	speakParagraph(para);
+}
+
 function init() {
 	if (annyang) {
 	
 	  // Let's define our first command. First the text we expect, and then the function it should call
 	  var commands = {
-	  	// 'show me *entry': search,
+	  	'show me *entry': doSearch,
 	  	// 'list': search,
 	  	//'help': help,
 	  	// 'help me': help
