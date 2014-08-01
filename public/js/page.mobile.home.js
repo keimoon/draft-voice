@@ -28,7 +28,8 @@ function search(term) {
 }
 
 function writelog(str) {
-	// node = document.
+	node = document.getElementById("log");
+	node.innerHTML = str;
 	// $(".log").text(str);
 }
 
