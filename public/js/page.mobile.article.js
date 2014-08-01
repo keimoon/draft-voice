@@ -59,8 +59,7 @@ elPlay.click(function (event) {
 		play();
 		speakParaWithId(curid);
 	} else {
-		pause();
-		cancelSpeak();
+		doStop();
 	}
 });
 
@@ -88,6 +87,7 @@ function doPrev() {
 }
 
 function doStop() {
+	console.log("STOP");
 	pause();
 	cancelSpeak();
 }
