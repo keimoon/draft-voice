@@ -100,7 +100,7 @@ function doStart() {
 function doSearch(term) {
 	para = "You want to search for " + term + "." +
 		" Found an article. Do you want to hear this?.";
-	writelog(para);
+	// writelog(para);
 	speakParagraph(para);
 }
 
