@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gesture test</title>
+	<link rel="stylesheet" href="/public/css/styles.css" class="style">
+
+	<style>
+.main {
+	background-color: yellow;
+	min-height: 500px;
+}
+</style>
+</head>
+
+<body>
+	<div class="main">
+		<h1>Gesture test</h1>
+		
+		<div id="output"></div>
+	</div>	
+
+	<script src="/public/js/vendor/jquery-2.1.1.min.js"></script>
+	<script src="/public/js/speak.js"></script>
+	<script src="/public/js/pointerevents.js"></script>
+	<script src="/public/js/gesture.js"></script>
+
+	<script>
+$(document).ready(function () {   
+	$('.main').fancygestures(function (data) {
+		// document.getElementById('outputbox').innerHTML += data;
+		// document.getElementById('outputbox').innerHTML = data;
+		console.log(data)
+		speakEnglish(data);	
+	});
+});
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recognition test</title>
+	<link rel="stylesheet" href="/public/css/styles.css" class="style">
+</head>
+
+<body>
+	<div class="main">
+		<h1>Recognition test</h1>
+		
+		<div id="output"></div>
+	</div>	
+	<script src="/public/js/speak.js"></script>
+	<script src="/public/js/annyang.min.js"></script>
+
+	<script>
+function welcome(cb) {
+	speakParagraph("Welcome to Voice Wikipedia.", cb)
+}
+
+function help() {
+	speakParagraph("Welcome to Voice Wikipedia. \
+		You can using voice commands to control this application.\
+		")
+}
+
+function yes() {
+	console.log("YES");
+	speakEnglish("You said yes");
+}
+
+function no() {
+	console.log("NO");
+	speakEnglish("You said no");
+}
+
+function init() {
+	console.log("INIT");
+	console.log(annyang);
+	if (annyang) {
+	
+	  // Let's define our first command. First the text we expect, and then the function it should call
+	  var commands = {
+	  	'hello :name': welcome,
+	  	'yes': yes,
+	  	'no': no,
+	  	'help': help
+	  };
+	  // Add our commands to annyang
+	  annyang.addCommands(commands);
+
+	  // Start listening. You can call this here, or attach this call to an event, button, etc.
+	  annyang.start();
+	}
+}
+
+init();
+welcome();
+	</script>
+</body>
+</html>
