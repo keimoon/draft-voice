@@ -67,6 +67,9 @@ function speak(nodeID, cb) {
 	*/
 }
 
+function cancelSpeak() {
+	window.speechSynthesis.cancel();
+}
 
 
 function speakJa(nodeID) {

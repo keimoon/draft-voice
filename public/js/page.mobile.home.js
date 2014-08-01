@@ -22,7 +22,7 @@ function help() {
 
 function search(term) {
 	para = "You want to search for " + term + "." +
-		"Found an article. Do you want to hear this?.";
+		" Found an article. Do you want to hear this?.";
 	writelog(para);
 	speakParagraph(para);
 }
@@ -44,7 +44,7 @@ function init() {
 	  	'show me *entry': search,
 	  	'list': search,
 	  	'help': help,
-	  	'help me': help,
+	  	'help me': help
 
 	  	// 'help': help
 	  };
