@@ -34,12 +34,14 @@ function speakPara(node) {
 	scrollToElement(node, 600);
 	$("p").css("color", "#444");
 	curid = getId(node);
+	play();
 
 	console.log("Paragraph: " + curid);
 	node.css("color", "red");
 	// console.log($me.text());
 	cancelSpeak();
 	speakParagraph(node.text(), function (event) {
+		pause();
 		node.css("color", "#444");
 		console.log("DONE!");
 		console.log(autoNext);
@@ -48,6 +50,28 @@ function speakPara(node) {
 			speakPara($("#p-" + curid.toString()));
 		}
 	});
+}
+
+var elPlay = $("#icon-play");
+
+elPlay.click(function (event) {
+	if (elPlay.hasClass("fa-play")) {
+		play();
+		speakParaWithId(curid);
+	} else {
+		pause();
+		cancelSpeak();
+	}
+});
+
+function play() {
+	elPlay.removeClass("fa-play");
+	elPlay.addClass("fa-pause");
+}
+
+function pause() {
+	elPlay.removeClass("fa-pause");
+	elPlay.addClass("fa-play");
 }
 
 // ACTIONS
@@ -63,10 +87,41 @@ function doPrev() {
 	}
 }
 
+function doStop() {
+	pause();
+	cancelSpeak();
+}
 
+function doStart() {
+	play();
+	speakParaWithId(curid);
+}
 
+function init() {
+	if (annyang) {
+	
+	  // Let's define our first command. First the text we expect, and then the function it should call
+	  var commands = {
+	  	// 'show me *entry': search,
+	  	// 'list': search,
+	  	//'help': help,
+	  	// 'help me': help
+	  	"next": doNext,
+	  	"back": doPrev,
+	  	"stop": doStop,
+	  	"start": doStart,
+	  };
+	  // Add our commands to annyang
+	  annyang.addCommands(commands);
+
+	  // Start listening. You can call this here, or attach this call to an event, button, etc.
+	  annyang.start();
+	}
+}
 
 
 $("p").click(function (event) {
 	speakPara($(this));
 });
+
+init();

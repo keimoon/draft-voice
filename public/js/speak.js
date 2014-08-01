@@ -72,6 +72,7 @@ function cancelSpeak() {
 }
 
 
+
 function speakJa(nodeID) {
 	element = document.getElementById(nodeID);
 	var text = element.textContent || element.innerText;
